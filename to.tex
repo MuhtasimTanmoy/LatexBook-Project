@@ -1,0 +1,263 @@
+\documentclass{article}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[letterpaper, total={6in, 8in}]{geometry}
+
+\begin{document}
+\begin{twocolumn}
+
+\title{Online on \LaTeX~Lecture 2 \& 3}
+\author{Azmain Adel\\1405075}
+\maketitle
+
+Today’s online is\footnote{A sample footnote} about implementing \textbf{Tables, Figures, Bibliography} and some \textbf{Mathematical Notations} as we have been 
+practising for the last two lectures. We will create a table with multiple
+ rows and columns in Section \ref{sec:1}, a figure in Section \ref{sec2}, a bibliography 
+ in Section \ref{sec3} and experiment with some mathematical symbols in Section \ref{sec4}.
+
+\section{Table} \label{sec:1}
+\textbf{Table} \ref{table1} contains multiple rows and columns. Do not forget to use proper package to get this done.
+
+\begin{table}[!tbh]
+  \centering
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \multicolumn{3}{|l|}{\textbf{Header}}\\
+      \hline
+      \textbf{Column1} & \multicolumn{2}{|c|}{\textbf{Column2}}\\
+      \hline
+      \multirow{2}{*}{Row1} & \textbf{Row1} & \textbf{Row1}\\
+      \cline{2-3}
+      & \textbf{Row2} & \textbf{Row2}\\
+      \hline
+    \end{tabular}
+  \label{table1}
+  \caption{\textbf{This is an example table.}}
+\end{table}
+
+\section{Figure} \label{sec2}
+\textbf{Figure} \ref{fig1} displays the BUET logo. Notice that it is displayed in single column within the two column article format. Do not forget to include proper package here too.
+
+
+\section{Bibliography} \label{sec3}
+You need to create your own \textbf{.bib} file that contains \textbf{three bibliographic references} in the following format:
+\\\\
+\texttt{@book\{bib\_label,\\
+title=\{The title of the Book\},\\
+author=\{Name of the author\}\}
+}
+\\~\\
+\noindent
+Refer only two of them in this Section (citation \cite{eos} and).
+
+\section{Mathematical Symbols and Equations} \label{sec4}
+This is an integral $\int_a^b x^2dx$ inside text. Another way is the following:
+\begin{displaymath}
+  \int_a^b x^2dx
+\end{displaymath}
+
+\noindent
+The binomial coefficient is defined by the next example:
+\begin{equation}
+  \binom{n}{k} = \frac{n!}{k!(n-k)!}
+\end{equation}
+
+\end{twocolumn}
+
+\begin{onecolumn}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.3\textwidth]{buetlogo.png}
+  \caption{\textbf{BUET Logo}}
+  \label{fig1}
+\end{figure}
+
+\bibliographystyle{plain}
+\bibliography{yo}
+\end{onecolumn}
+
+\end{document}
+
+
+%bibtex lesson7a1
+
+
+//////////////////////////////
+
+
+
+\documentclass{article}
+
+\usepackage{amsmath}
+
+\begin{document}
+\title{\LaTeX{} Lecture 2}
+\date{}
+\maketitle
+
+\section{Footnote}
+This line has a footnote.\footnote{A sample footnote}
+
+\section{Font Size}
+
+\subsection{Predefined Sizes}
+{\tiny This is in tiny fontsize.}\\
+{\small This is in small fontsize.}\\
+{\large This is in large fontsize.}\\
+{\Large This is in Large fontsize.}\\
+{\LARGE This is in LARGE fontsize.}
+
+\subsection{Custom Size}
+{
+\fontsize{4cm}{1cm}\selectfont
+This is ridiculously large (4cm size, 1cm line space).
+}
+
+\section{Changing Fonts}
+{
+	\fontencoding{T1}
+	\fontfamily{phv}
+	\fontseries{m}
+	\fontshape{it}
+	\selectfont
+	This is Helvetica in medium series, italic. Check out some other options from Wikibook.\\
+}
+{
+	\fontencoding{\encodingdefault}
+	\fontfamily{\familydefault}
+	\fontseries{\seriesdefault}
+	\fontshape{\shapedefault}
+	\selectfont
+	Back to the defaults.\\
+}
+{
+	\usefont{T1}{phv}{m}{it}Back to Helvetica, but with different syntax.
+}
+
+\section{Verbatim}
+Verbatim is used when you want to output someting word for word as it is without any interpretation.\\
+This is inline verbatim: \verb|!@#$%^&*|.\\~\\
+This is block level verbatim:
+\begin{verbatim}!@#$%^&*\end{verbatim}
+
+\section{Mathematical Symbols}
+It is better to include the \textbf{amsmath} or the \textbf{mathtools} package before writing mathematical symbols.
+Many symbols will actually work without them, but some will require either one of the packages.
+We discussed a handful of symbols in class, if you need to use more checkout the \LaTeX{} Wikibook.
+
+\subsection{A Simple Example}
+This is a simple equation: a + a = 2a\\
+This is a simple equation: $a + a = 2a$\\
+\\~\\
+The equation in first line is in normal text, whereas the one in the second line is in a mathematical environment.
+
+\subsection{Mathematical Environments}
+Various mathematical environments along with their shorthand notation are presented in Table~\ref{tab:vme}.
+\begin{table}[h]
+	\centering
+	\caption{Various Mathematical Environments}
+	\label{tab:vme}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Environment} & Shorthand 1 & Shorthand 2\\
+		\hline
+		math (inline) & \$ \ldots \$ & \textbackslash ( \ldots \textbackslash )\\
+		displaymath (block level) & \$\$ \ldots \$\$ & \textbackslash [ \ldots \textbackslash ]\\
+ equation (block level, numbered) & ~ & ~\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection{Summation and Indices}
+Inline summation: $\sum_{i=0}^na_i$\\
+Inline summation with displaystyle: $\displaystyle\sum_{i=0}^na_i$\\
+Summation in block level math:
+$$\sum_{i=0}^na_i$$
+Summation in equation:
+\begin{equation}
+\sum_{i=0}^na_i
+\end{equation}
+
+\subsection{Miscellaneous}
+Change epsilon to phi, Phi, and varphi in the following equation observe the results.
+\begin{displaymath}
+	\forall x \in X, \quad \exists y \leq \epsilon
+\end{displaymath}
+\\~\\
+Use operator commands when available, otherwise use textrm/mathrm.
+\begin{displaymath}
+	\cos2\theta = \cos^2\theta - \sin^2\theta
+\end{displaymath}
+\begin{displaymath}
+	\textrm{cos}2\theta = \mathrm{cos}^2\theta - \textrm{sin}^2\theta
+\end{displaymath}
+\\~\\
+Limits and inifinity:
+\begin{displaymath}
+	\lim_{x \to \infty} \exp(-x) = 0
+\end{displaymath}
+\\~\\
+Fractions:
+\begin{displaymath}
+	\frac{a}{b}
+\end{displaymath}
+\\~\\
+Binomoals:
+\begin{displaymath}
+	\binom{n}{k}
+\end{displaymath}
+\\~\\
+Times:
+\begin{displaymath}
+	a \times b
+\end{displaymath}
+\\~\\
+$n$th root:
+\begin{displaymath}
+	\sqrt[n]{a}
+\end{displaymath}
+\\~\\
+Mods and equivalence:
+\begin{displaymath}
+	a \bmod b, \quad a \pmod b, \quad a \equiv b
+\end{displaymath}
+\\~\\
+Integrals:
+\begin{displaymath}
+	\int_a^b
+\end{displaymath}
+\\~\\
+Set operations:
+\begin{displaymath}
+	a \cap b, \quad a \cup b, \quad a \bigcap b, \quad a \bigcup b
+\end{displaymath}
+\\~\\
+Plus minus:
+\begin{displaymath}
+	a \pm 5, \quad a \mp 5
+\end{displaymath}
+
+\subsection{Automatic Sizing of Parentheses/Braces/Brackets}
+Compare the following two fractions:
+\begin{displaymath}
+	(\frac{a}{b})
+\end{displaymath}
+\begin{displaymath}
+	\left(\frac{a}{b}\right)
+\end{displaymath}
+
+\subsection{Matrices}
+Change the matrix environment to \{pbBvV\}matrix in the following equation and observe the output:
+\begin{equation}
+	\begin{matrix}
+		1 & 0 & 0\\
+		0 & 1 & 0\\
+		0 & 0 & 1
+	\end{matrix}
+\end{equation}
+
+\end{document}
+
+
